@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PagingWithROOM Cheese</string>
+    <string name="input_name">Input Name</string>
+    <string name="you_want_to_delete">You want to delete "%s"?</string>
+</resources>
