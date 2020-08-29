@@ -25,14 +25,6 @@ object InjectorUtils {
         return GetAllCheeseUseCaseImpl(cheeseDb)
     }
 
-//    fun provideCheeseViewModelFactory(cheeseDb: CheeseDb): CheeseViewModel.Factory {
-//        return CheeseViewModel.Factory(
-//            provideInsertUseCase(cheeseDb),
-//            provideDeleteUseCase(cheeseDb),
-//            provideGetAllCheeseUseCase(cheeseDb)
-//        )
-//    }
-
     fun provideCheeseViewModelFactory(context: Context): CheeseViewModel.Factory {
         val cheeseDb = provideCheeseDb(context)
         return CheeseViewModel.Factory(
@@ -41,6 +33,14 @@ object InjectorUtils {
             provideGetAllCheeseUseCase(cheeseDb)
         )
     }
+
+//    fun provideCheeseViewModelFactory(cheeseDb: CheeseDb): CheeseViewModel.Factory {
+//        return CheeseViewModel.Factory(
+//            provideInsertUseCase(cheeseDb),
+//            provideDeleteUseCase(cheeseDb),
+//            provideGetAllCheeseUseCase(cheeseDb)
+//        )
+//    }
 
 //    fun provideCheeseViewModelFactory(
 //        insertCheeseUseCase: InsertCheeseUseCase,

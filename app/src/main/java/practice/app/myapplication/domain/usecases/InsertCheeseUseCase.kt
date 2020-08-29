@@ -10,9 +10,8 @@ interface InsertCheeseUseCase {
 class InsertCheeseUseCaseImpl(private val cheeseDb: CheeseDb) : InsertCheeseUseCase {
 
     override suspend fun execute(text: CharSequence) {
-        cheeseDb.cheeseDao().insert(
-            Cheese(id = 0, name = text.toString())
-        )
+        val cheese = Cheese(id = 0, name = text.toString())
+        cheeseDb.cheeseDao().insert(cheese)
     }
 
 }

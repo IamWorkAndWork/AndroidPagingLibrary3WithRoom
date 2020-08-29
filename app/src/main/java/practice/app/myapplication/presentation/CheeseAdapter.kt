@@ -37,8 +37,10 @@ class CheeseAdapter : PagingDataAdapter<Cheese, CheeseAdapter.CheeseViewHolder>(
         )
     }
 
-    inner class CheeseViewHolder(itemView: View, private val onClickItem: ((Cheese) -> Unit)?) :
-        RecyclerView.ViewHolder(itemView) {
+    inner class CheeseViewHolder(
+        itemView: View,
+        private val onClickItem: ((Cheese) -> Unit)?
+    ) : RecyclerView.ViewHolder(itemView) {
 
         private val nameView = itemView.findViewById<TextView>(R.id.name)
         var cheese: Cheese? = null

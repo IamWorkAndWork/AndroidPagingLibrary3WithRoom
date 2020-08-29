@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagingData
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOn
 import practice.app.myapplication.data.model.Cheese
 import practice.app.myapplication.domain.usecases.GetAllCheeseUseCase
 import practice.app.myapplication.domain.usecases.InsertCheeseUseCase
@@ -37,12 +38,11 @@ class CheeseViewModel(
     }
 
     fun fetchAllCheeses() {
-        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+        job = CoroutineScope(Dispatchers.Main + exceptionHandler).launch {
             getAllCheeseUseCase.execute()
+                .flowOn(Dispatchers.IO)
                 .collectLatest {
-                    withContext(Dispatchers.Main) {
-                        allCheeses.value = it
-                    }
+                    allCheeses.value = it
                 }
         }
     }
